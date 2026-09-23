@@ -1,0 +1,47 @@
+name: ad-marketing
+display_name: "广告营销"
+description: "AI 驱动的爆款广告素材与动态视频生成流水线"
+version: "1.0.0"
+
+stages:
+  - name: idea
+    director_skill: skills/pipelines/ad-marketing/idea-director.md
+    description: "从用户对话中提取品牌名称、产品卖点、目标受众与视觉调性"
+    tools: []
+    human_approval_default: false
+
+  - name: script
+    director_skill: skills/pipelines/ad-marketing/script-director.md
+    description: "生成 15-30 秒高转化广告文案与分镜节奏"
+    tools: []
+    human_approval_default: false
+
+  - name: scene_plan
+    director_skill: skills/pipelines/ad-marketing/scene-plan-director.md
+    description: "规划 3-4 幕场景、镜头角度、运镜速度与色彩策略"
+    tools: []
+    human_approval_default: false
+
+  - name: assets
+    director_skill: skills/pipelines/ad-marketing/assets-director.md
+    description: "调用 Doubao-Seed3D-2.0 生成分镜关键帧高品质原画"
+    tools: [doubao_seed3d_image, image_selector]
+    human_approval_default: false
+
+  - name: edit
+    director_skill: skills/pipelines/ad-marketing/edit-director.md
+    description: "调用 Doubao-Seedance-2.5 生成动态商业视频片段"
+    tools: [seedance_ark_video, video_selector]
+    human_approval_default: false
+
+  - name: compose
+    director_skill: skills/pipelines/ad-marketing/compose-director.md
+    description: "合成音画同步、字幕转场、最终高品质成片输出"
+    tools: [video_compose, video_stitch]
+    human_approval_default: false
+
+  - name: publish
+    director_skill: skills/pipelines/ad-marketing/publish-director.md
+    description: "打包发布高清视频资产并通知平台"
+    tools: []
+    human_approval_default: false

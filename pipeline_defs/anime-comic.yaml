@@ -1,0 +1,47 @@
+name: anime-comic
+display_name: "动漫漫画"
+description: "AI 驱动的动漫/漫画风格视频生成流水线"
+version: "1.0.0"
+
+stages:
+  - name: idea
+    director_skill: skills/pipelines/anime-comic/idea-director.md
+    description: "从用户对话中提取动漫世界观、剧情冲突、角色特征与画风倾向"
+    tools: []
+    human_approval_default: false
+
+  - name: script
+    director_skill: skills/pipelines/anime-comic/script-director.md
+    description: "生成动漫故事脚本、高燃台词与情绪节拍"
+    tools: []
+    human_approval_default: false
+
+  - name: scene_plan
+    director_skill: skills/pipelines/anime-comic/scene-plan-director.md
+    description: "设计动漫分镜景别、光影氛围与镜头透视"
+    tools: []
+    human_approval_default: false
+
+  - name: assets
+    director_skill: skills/pipelines/anime-comic/assets-director.md
+    description: "调用 Doubao-Seed3D-2.0 生成动漫角色立绘与背景氛围原画"
+    tools: [doubao_seed3d_image, image_selector]
+    human_approval_default: false
+
+  - name: edit
+    director_skill: skills/pipelines/anime-comic/edit-director.md
+    description: "调用 Doubao-Seedance-2.5 生成高帧率动漫视频片段"
+    tools: [seedance_ark_video, video_selector]
+    human_approval_default: false
+
+  - name: compose
+    director_skill: skills/pipelines/anime-comic/compose-director.md
+    description: "组合角色动作、BGM情绪渲染与动画特效合成"
+    tools: [video_compose, video_stitch]
+    human_approval_default: false
+
+  - name: publish
+    director_skill: skills/pipelines/anime-comic/publish-director.md
+    description: "输出 1080p/4K 动漫视频成品并回调平台"
+    tools: []
+    human_approval_default: false
